@@ -15,7 +15,6 @@ import java.util.logging.Logger;
  */
 public class Psp_ejercicio02 {
 
-    public static int num = 0;
     public static int dias[] = new int[20];
 
     /**
@@ -26,7 +25,6 @@ public class Psp_ejercicio02 {
             Almacen almacen = new Almacen();
             Envio envio = new Envio("Envio", almacen);
             Retirada retirada = new Retirada("Retirada", almacen);
-            num++;            
             envio.start();
             retirada.start();
             try {
@@ -35,8 +33,7 @@ public class Psp_ejercicio02 {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Psp_ejercicio02.class.getName()).log(Level.SEVERE, null, ex);
             }
-            dias[n] = retirada.dias;
-            n++;
+            dias[n] = retirada.dias;            
         }
         for (int i = 0; i < 20; i++) {
             System.out.println("Iteracion " + i + " ha tardado " + dias[i]+" dias");
