@@ -21,12 +21,12 @@ public class Psp_ejercicio02 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {            
-        for (int n = 0; n < 20; n++) {
+        for (int n = 0; n < 2; n++) {
             Almacen almacen = new Almacen();
             Envio envio = new Envio("Envio", almacen);
             Retirada retirada = new Retirada("Retirada", almacen);
-            envio.start();
             retirada.start();
+            envio.start();
             try {
                 envio.join();
                 retirada.join();
@@ -35,7 +35,7 @@ public class Psp_ejercicio02 {
             }
             dias[n] = retirada.dias;            
         }
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 2; i++) {
             System.out.println("Iteracion " + i + " ha tardado " + dias[i]+" dias");
         }
 
