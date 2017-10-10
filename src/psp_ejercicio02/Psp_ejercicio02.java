@@ -5,7 +5,6 @@
  */
 package psp_ejercicio02;
 
-import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +20,7 @@ public class Psp_ejercicio02 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {            
-        for (int n = 0; n < 2; n++) {
+        for (int n = 0; n < 20; n++) {
             Almacen almacen = new Almacen();
             Envio envio = new Envio("Envio", almacen);
             Retirada retirada = new Retirada("Retirada", almacen);
@@ -29,13 +28,13 @@ public class Psp_ejercicio02 {
             envio.start();
             try {
                 envio.join();
-                retirada.join();
+                //retirada.join();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Psp_ejercicio02.class.getName()).log(Level.SEVERE, null, ex);
             }
             dias[n] = retirada.dias;            
         }
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 20; i++) {
             System.out.println("Iteracion " + i + " ha tardado " + dias[i]+" dias");
         }
 
